@@ -18,7 +18,7 @@
 > 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次，一般load远端data放在此钩子函数里。
 
 
-**在更新时触发德钩子函数：**
+**在更新时触发的钩子函数：**
 
   **5、componentWillReceivePorps(nextProps)**
 > 组件初始化时不调用，组件接受新的props时调用。   
