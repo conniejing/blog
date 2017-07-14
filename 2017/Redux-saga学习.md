@@ -4,7 +4,7 @@
 > redux-saga 是一个用于管理 Redux 应用异步操作的库，（例如异步获取服务器数据、获取浏览器缓存）使React/Redux应用更简单明了。
 
 ### 出现的原因
-> redux根据action进行Store的修改，但是无法处理异步操作。redux-saga通过创建Sagas将异步操作逻辑集中处理，可以用来代替redux-thunk。
+> redux根据action进行Store的修改，但是传统的方式无法处理异步操作（通过Redux Thunk middleware处理）。redux-saga通过创建Sagas将异步操作逻辑集中处理，可以用来代替redux-thunk。
 
 ### 一般实现（自己的理解）
 > sagaMiddleware监听异步action，做异步处理（fetch），处理返回结果后调用同步action
