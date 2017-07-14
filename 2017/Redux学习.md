@@ -118,3 +118,9 @@ Redux应用中数据的生命周期：
 > Redux原生提供combineReducers()辅助函数   
 4. Redux store保存根reducer返回的完成的state树   
 > 所有订阅store.subscribe(listener)的监听器都将被调用
+
+---
+
+### 遇到的问题
+1. 相同的action.type会覆盖还是都执行？有执行顺序么？   
+答：不同的reduce（不同的state属性）中有相同的action.type都会被触发执行。按照创建的顺序执行，但是顺序并没有什么影响
