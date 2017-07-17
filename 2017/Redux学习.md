@@ -42,7 +42,7 @@ store.dispatch({
 ```
 
 - 纯函数来执行修改
-> 描述action如何改变state的函数，可以控制它们被调用的顺序，传入附加数据，编写可复用的reducer来处理通用任务。
+> 描述action如何改变数据的函数，可以控制它们被调用的顺序，传入附加数据，编写可复用的reducer来处理通用任务。
 
 ```
 function visibilityFilter(state = 'SHOW_ALL', action) {
@@ -110,9 +110,9 @@ default情况下返回上一次的state。
 
 Redux应用中数据的生命周期：
 1. 调用store.dispatch(action)
-> 描述“发生了什么”的对象
+> 触发action的函数，action是改变State的唯一途径，但是它只描述了一个行为，而 dipatch 可以看作是触发这个行为的方式
 2. Redux store调用传入的reducer函数  
-> 把当前state和action传入reducer函数，返回计算后新的state。   
+> 描述如何改变数据。把当前state和action传入reducer函数，返回计算后新的state。   
 纯函数reducer是可预测，多次传入相同的输入必须有相同的输出。  
 3. 根reducer合并多个子reducer组成单一的state树   
 > Redux原生提供combineReducers()辅助函数   
