@@ -13,18 +13,36 @@
 
 ```
 app.model({
-  namespace: 'products',  // reducer在combine到rootReducer时的key值
+  /** 
+   * reducer在combine到rootReducer时的key值
+   * 全局state上的属性，只能用字符串，不支持.创建多层命名空间
+   */
+  namespace: 'products',  
+  /**
+   * reducer的initialState
+   * 优先级低于传给dva()的opts.initialState
+   */
   state: {  // reducer的initialState
     list: [],
     loading: false,
   },
-  subscriptions: [  // 在dom ready后执行 TODO：详细理解
+  /**
+   * key/value格式定义subscription
+   * 用于订阅一个数据源，然后根据需要 dispatch 相应的 action
+   * app.start()时被执行
+   */
+  subscriptions: [
     function(dispatch) {
       dispatch({type: 'products/query'});
     },
   ],
-  effects: {  // 简化saga
-    ['products/query']: function*() { // 类似take({action.type})
+  /**
+   * key/value格式定义effect
+   * 用于处理异步操作和业务逻辑
+   * 不直接修改state
+   */
+  effects: {
+    ['products/query']: function*() {
       yield call(delay(800));
       yield put({
         type: 'products/query/success',
@@ -32,7 +50,12 @@ app.model({
       });
     },
   },
-  reducers: {  // 简化reducers
+  /**
+   * key/value格式定义reducer
+   * 用于处理同步操作
+   * 唯一可以修改state的地方
+   */
+  reducers: {
     ['products/query'](state) { // 类似switch…case({action.type})
       return { ...state, loading: true, };
     },
