@@ -1,5 +1,6 @@
 ![image](http://wx2.sinaimg.cn/large/88ecd367gy1fglouzy1sij21kw1nrjy6.jpg)
-**组件在初始化时会触发的钩子函数：**
+
+### **组件在初始化时会触发的钩子函数：**
 
   **1、constructor()**
 > 设置默认的props，也可以用dufaultProps设置组件的默认属性。  
@@ -18,7 +19,7 @@
 > 组件渲染之后调用，可以通过this.getDOMNode()获取和操作dom节点，只调用一次，一般load远端data放在此钩子函数里。
 
 
-**在更新时触发的钩子函数：**
+### **在更新时触发的钩子函数：**
 
   **5、componentWillReceivePorps(nextProps)**
 > 组件初始化时不调用，组件接受新的props时调用。   
@@ -41,7 +42,18 @@ initial render和forceUpdate不触发。
 > 组件初始化时不调用，组件更新完成后调用，此时可以获取dom节点。
 
 
-还有一个卸载钩子函数
+### **还有一个卸载钩子函数：**
 
   **10、componentWillUnmount()**
 > 组件将要卸载时调用，一些事件监听和定时器需要在此时清除。
+
+
+### 遇到的问题
+>问题：一个子组件(B)，通过父组件(A)传递数据(A.radioFields)渲染。
+子组件里某个按钮点击后会触发父组件的方法(A.change)然后更改(A.radioFields)
+我理解的这个时候B组件会触发自身的componentWillReceiveProps并重新渲染，但是我写的代码并不会。  
+  
+> 原因：  
+1. 数据来源不对。（A.radioFields数据是定义在render函数中的对象，既不是state也不是props。）  
+2. 没有触发state更改（A.change没有dispatch也没有setState） 
+3. 要么让A重新渲染（这样 A的render函数重新执行。然后B才会重新渲染。） 要么B里调用setState（B重新渲染）
