@@ -53,7 +53,20 @@ initial render和forceUpdate不触发。
 子组件里某个按钮点击后会触发父组件的方法(A.change)然后更改(A.radioFields)
 我理解的这个时候B组件会触发自身的componentWillReceiveProps并重新渲染，但是我写的代码并不会。  
   
-> 原因：  
+> 解答：  
 1. 数据来源不对。（A.radioFields数据是定义在render函数中的对象，既不是state也不是props。）  
 2. 没有触发state更改（A.change没有dispatch也没有setState） 
 3. 要么让A重新渲染（这样 A的render函数重新执行。然后B才会重新渲染。） 要么B里调用setState（B重新渲染）
+
+> 问题：怎么创建同时受控与非受控的组件   
+
+> 出现原因：类似input、select跟用户交互的组件   
+*如果自身维护自己的的state，则外部无法修改（非受控）   
+如果通过props设置value，则input只能通过外部组件来更新（受控）   
+我们希望外部能修改value且内部又能够触发更新数据*   
+
+> 解答：同时维护props.value和state.value的值。props.value在展示上拥有更高的优先级，state.value代表着组件真正的值。  
+原则1. props.value比内部state.value优先级更高   
+原则2. 组件中所有变化都同步到内部的state.value，并通过执行props.change来触发更新   
+原则3. 当组件接受到新的props时，将props.value反应给state.value   
+原则4. 当props.value变化时更新组件
