@@ -67,4 +67,12 @@ app.model({
 });
 ```
 
-
+### 开发中的学习笔记
+1. 创建Model：在models文件夹下新建文件夹（UserManage），新建index.js并创建model（此时主要是namespace和state数据准备）   
+&nbsp;&nbsp;a) subscriptions中添加history.listen   
+&nbsp;&nbsp;b) 添加fetch相关effects   
+&nbsp;&nbsp;c) 添加reducers   
+2. 创建Component：在components文件夹下新建文件夹（UserManage），再新建index.js并创建页面组件（UserManage，页面展现样式）
+3. 创建Page Component：在pages文件夹下新建UserManage.js，connect(mapStateToProps, mapDispatchToProps)(UserManage)把props传入组件
+4. 在入口文件（index.js）中注册model app.model(require('./models/userManage')); 
+5. 在路由文件（router.js）中配置Route <Route path="/userManage" component={pages.UserManage} breadcrumbName="用户管理"/>
