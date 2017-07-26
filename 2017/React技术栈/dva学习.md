@@ -16,6 +16,7 @@ app.model({
   /** 
    * reducer在combine到rootReducer时的key值
    * 全局state上的属性，只能用字符串，不支持.创建多层命名空间
+   * pages中mapStateToProps的参数值必须一致
    */
   namespace: 'products',  
   /**
