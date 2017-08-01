@@ -21,7 +21,7 @@
 
 ### **在更新时触发的钩子函数：**
 
-  **5、componentWillReceivePorps(nextProps)**
+  **5、componentWillReceiveProps(nextProps)**
 > 组件初始化时不调用，组件接受新的props时调用。   
 父组件的render事件会触发子组件的此事件。
 
