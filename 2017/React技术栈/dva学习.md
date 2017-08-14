@@ -76,3 +76,4 @@ app.model({
 3. 创建Page Component：在pages文件夹下新建UserManage.js，connect(mapStateToProps, mapDispatchToProps)(UserManage)把props传入组件。在pages/index.js添加UserManage。
 4. 在入口文件（index.js）中注册model app.model(require('./models/userManage')); 
 5. 在路由文件（router.js）中配置Route <Route path="/userManage" component={pages.UserManage} breadcrumbName="用户管理"/>
+6. Ant Design中的Form表单受控组件，一定要注意，在getFieldDecorator方法后的组件里，直接写表单组件（input，RadioGroup等）不要用div包裹起来，会出现不能传值错误和无法传值的问题
