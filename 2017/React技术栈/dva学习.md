@@ -1,4 +1,4 @@
-# dva学习笔记
+# dva
 
 ### 概述
 > 基于redux、redux-saga和react-router@2.0的轻量级前端框架
@@ -66,9 +66,11 @@ app.model({
   },
 });
 ```
+### dva 2.0
+> 2.0 最主要的变化是提取了 dva-core，是仅封装了 redux 和 redux-saga 的纯数据流方案。这使得 dva 可以应用在除 react 之外的其他领域，比如 RN、小程序、游戏、vue 等领域；同时也可满足同一领域的多种实现，比如为 react 应用不同的路由方案的 dva-react-router-3 和 dva-no-router
 
-### 开发中的学习笔记
-1. 创建Model：在models文件夹下新建文件夹（UserManage），新建index.js并创建model（此时主要是namespace和state数据准备）   
+### 开发参考步骤
+1. 创建Model：在models文件夹下新建文件夹（UserManage），新建index.js并创建model（此时主要是namespace和state数据准备）   
 &nbsp;&nbsp;a) subscriptions中添加history.listen   
 &nbsp;&nbsp;b) 添加fetch相关effects   
 &nbsp;&nbsp;c) 添加reducers   
