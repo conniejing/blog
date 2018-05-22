@@ -1,4 +1,4 @@
-# Cookies and Sessions
+# Cookies and Session
 
 > Cookies和Sessions是密切联系的，是创建丰富交互式网络应用的基础。
 
